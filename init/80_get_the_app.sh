@@ -7,8 +7,6 @@ mv pydio-*/data/* /data/
 mv pydio-* /config/www/pydio
 cd /
 rm -rf /tmp/* /config/www/data
-sed -i -e 's@\define("AJXP_DATA_PATH",.*@\define("AJXP_DATA_PATH", "/data");@g' /config/www/pydio/conf/bootstrap_context.php
-sed -i -e 's@\define("AJXP_SHARED_CACHE_DIR",.*@\define("AJXP_SHARED_CACHE_DIR", "/data/cache");@g' /config/www/pydio/conf/bootstrap_context.php
 chown -R abc:abc /config/www/pydio /data
 fi
 
