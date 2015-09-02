@@ -38,9 +38,6 @@ RUN apt-get update -q && \
 apt-get install \
 $APTLIST -qy && \
 
-# delete default ssmtp config file
-rm /etc/ssmtp/ssmtp.conf && \
-
 # cleanup 
 apt-get clean -y && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -64,7 +61,12 @@ sed -i -e "s@\output_buffering =.*@\output_buffering = \off@g" /etc/php5/cli/php
 sed -i "s/upload_max_filesize =.*$/upload_max_filesize = 2048M/" /etc/php5/fpm/php.ini && \
 sed -i "s/upload_max_filesize =.*$/upload_max_filesize = 2048M/" /etc/php5/cli/php.ini && \
 sed -i "s/post_max_size =.*$/post_max_size = 1560M/" /etc/php5/fpm/php.ini && \
-sed -i "s/post_max_size =.*$/post_max_size = 1560M/" /etc/php5/cli/php.ini
+sed -i "s/post_max_size =.*$/post_max_size = 1560M/" /etc/php5/cli/php.ini && \
+
+# delete default ssmtp config file and set ssmtp as default emailer for pydio
+rm /etc/ssmtp/ssmtp.conf && \
+mv /usr/sbin/sendmail /usr/sbin/sendmail.org && \
+ln -s /usr/sbin/ssmtp /usr/sbin/sendmail && \
 
 # expose ports
 EXPOSE 80 443
