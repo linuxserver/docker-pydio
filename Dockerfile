@@ -11,6 +11,7 @@ git \
 gzip \
 nano \
 openssl \
+libsqlite3-dev \
 libssh2-php \
 php5-cli \
 php5-curl \
@@ -27,6 +28,7 @@ php5-pgsql \
 php5-sqlite \
 php5-xmlrpc \
 rsync \
+sqlite3 \
 ssmtp \
 subversion \
 tar \
