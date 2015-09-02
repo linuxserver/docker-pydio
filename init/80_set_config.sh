@@ -17,5 +17,5 @@ fi
 cp /config/php/php-cli.ini /etc/php5/cli/php.ini
 cp /config/php/php-fpm.ini /etc/php5/fpm/php.ini
 
-chown abc:abc /config/log/pydio /data /config/php/*
+chown -R abc:abc /config/log/pydio /config/php
 
