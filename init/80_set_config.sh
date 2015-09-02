@@ -1,11 +1,12 @@
 #!/bin/bash
 mkdir -p /config/log/pydio /config/php
 
-
-# sed in pydio data folder locations for /data
+# sed in pydio data folder locations for /data and logging
 sed -i -e 's@\define("AJXP_DATA_PATH",.*@\define("AJXP_DATA_PATH", "/data");@g' /config/www/pydio/conf/bootstrap_context.php
 sed -i -e 's@\define("AJXP_SHARED_CACHE_DIR",.*@\define("AJXP_SHARED_CACHE_DIR", "/data/cache");@g' /config/www/pydio/conf/bootstrap_context.php
+sed -i -e 's@\// define("AJXP_FORCE_LOGPATH",.*@\define("AJXP_FORCE_LOGPATH", "/config/log/pydio/")\;@g' /config/www/pydio/conf/bootstrap_context.php
 
+# cp php ini files to /config for user edit
 if [ ! -f "/config/php/php-fpm.ini" ]; then
 cp /etc/php5/fpm/php.ini /config/php/php-fpm.ini
 fi
