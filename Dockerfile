@@ -60,7 +60,11 @@ RUN chmod -v +x /etc/service/*/run /etc/my_init.d/*.sh && \
 # enable php mods and set some config for pydio
 php5enmod imap mcrypt && \
 sed -i -e "s@\output_buffering =.*@\output_buffering = \off@g" /etc/php5/fpm/php.ini && \
-sed -i -e "s@\output_buffering =.*@\output_buffering = \off@g" /etc/php5/cli/php.ini
+sed -i -e "s@\output_buffering =.*@\output_buffering = \off@g" /etc/php5/cli/php.ini && \
+sed -i "s/upload_max_filesize =.*$/upload_max_filesize = 2048M/" /etc/php5/fpm/php.ini && \
+sed -i "s/upload_max_filesize =.*$/upload_max_filesize = 2048M/" /etc/php5/cli/php.ini && \
+sed -i "s/post_max_size =.*$/post_max_size = 1560M/" /etc/php5/fpm/php.ini && \
+sed -i "s/post_max_size =.*$/post_max_size = 1560M/" /etc/php5/cli/php.ini
 
 # expose ports
 EXPOSE 80 443
