@@ -9,7 +9,9 @@ imagemagick \
 ghostscript \
 git \
 gzip \
+nano \
 openssl \
+libssh2-php \
 php5-cli \
 php5-curl \
 php5-dev \
@@ -25,7 +27,7 @@ php5-pgsql \
 php5-sqlite \
 php5-xmlrpc \
 rsync \
-#ssmtp \
+ssmtp \
 subversion \
 tar \
 unzip \
@@ -37,7 +39,7 @@ apt-get install \
 $APTLIST -qy && \
 
 # delete default ssmtp config file
-#rm /etc/ssmtp/ssmtp.conf && \
+rm /etc/ssmtp/ssmtp.conf && \
 
 # cleanup 
 apt-get clean -y && \
