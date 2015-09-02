@@ -66,7 +66,7 @@ sed -i "s/post_max_size =.*$/post_max_size = 1560M/" /etc/php5/cli/php.ini && \
 # delete default ssmtp config file and set ssmtp as default emailer for pydio
 rm /etc/ssmtp/ssmtp.conf && \
 mv /usr/sbin/sendmail /usr/sbin/sendmail.org && \
-ln -s /usr/sbin/ssmtp /usr/sbin/sendmail && \
+ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
 
 # expose ports
 EXPOSE 80 443
