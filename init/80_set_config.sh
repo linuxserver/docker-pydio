@@ -23,14 +23,8 @@ chown -R abc:abc /config/log/pydio /config/php
 # setting email config file.
 
 if [ ! -f "/config/ssmtp.conf" ]; then
-
-cat <<'EOT' > /config/ssmtp.conf
-root=<your_email>
-mailhub=smtp.gmail.com:587
-AuthUser=<your_email>
-AuthPass=<your_password>
-UseSTARTTLS=YES
-EOT
+cp /defaults/ssmtp.conf /config/ssmtp.conf
 chown abc:abc /config/ssmtp.conf
 fi
+
 cp /config/ssmtp.conf /etc/ssmtp/ssmtp.conf
