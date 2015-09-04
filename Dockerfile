@@ -13,6 +13,7 @@ nano \
 openssl \
 libsqlite3-dev \
 libssh2-php \
+memcached \
 php5-cli \
 php5-curl \
 php5-dev \
@@ -20,14 +21,18 @@ php5-gd \
 php5-imagick \
 php5-imap \
 php5-mcrypt \
+php5-memcached \
 php-pear \
 php5-ldap \
 php-mail-mimedecode \
 php5-mysql \
 php5-pgsql \
+php5-pspell \
+php5-snmp \
 php5-sqlite \
 php5-xmlrpc \
 rsync \
+snmp-mibs-downloader \
 sqlite3 \
 ssmtp \
 subversion \
