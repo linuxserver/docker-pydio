@@ -15,7 +15,7 @@ server {
 
 	ssl_certificate /config/keys/cert.crt;
         ssl_certificate_key /config/keys/cert.key;
-        client_max_body_size 15M;
+        client_max_body_size 0;
         client_body_buffer_size 128k;
 
         rewrite ^/dashboard|^/settings|^/welcome|^/ws- /index.php last;
