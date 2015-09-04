@@ -1,24 +1,26 @@
 ![http://linuxserver.io](http://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)
 
-The [LinuxServer.io](http://linuxserver.io) team brings you another quality container release featuring auto-update on startup, easy user mapping and community support. Be sure to checkout our [forums](http://forum.linuxserver.io) or for real-time support our [IRC](http://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
+The [LinuxServer.io](https://www.linuxserver.io/) team brings you another quality container release featuring auto-update on startup, easy user mapping and community support. Be sure to checkout our [forums](https://forum.linuxserver.io/index.php) or for real-time support our [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
 
 # linuxserver/pydio
 
-<Provide a short, concise description of the application. No more than two SHORT paragraphs. Link to sources where possible and include an image illustrating your point if necessary. Point users to the original applications website, as that's the best place to get support - not here.>
+Pydio (formerly AjaXplorer) is a mature open source software solution for file sharing and synchronization. With intuitive user interfaces (web / mobile / desktop), Pydio provides enterprise-grade features to gain back control and privacy of your data: user directory connectors, legacy filesystems drivers, comprehensive admin interface, and much more. [pydio](https://pyd.io/)
 
 ## Usage
 
 ```
-docker create --name=pydio -v /etc/localtime:/etc/localtime:ro -v <path to data>:/config -e PGID=<gid> -e PUID=<uid>  -p 1234:1234 linuxserver/pydio
+docker create --name=pydio -v /etc/localtime:/etc/localtime:ro -v <path to data>:/config -v <path to data>:/data -e PGID=<gid> -e PUID=<uid>  -e TZ=<timezone> -p 443:443 linuxserver/pydio
 ```
 
 **Parameters**
 
-* `-p 4242` - the port(s)
-* `-v /etc/localhost` for timesync - *optional*
-* `-v /config` -
+* `-p 443` - the port(s)
+* `-v /etc/localhost` for timesync - *optional*, *omit if using TZ variable*
+* `-v /config` - where pydio should store it's configuration files
+* `-v /data` - where pydio should store uploaded files
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `-e TZ` for setting timezone information, eg Europe/London
 
 It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it pydio /bin/bash`.
 
@@ -30,7 +32,10 @@ Part of what makes our containers work so well is by allowing you to specify you
 
 ## Setting up the application 
 
-<Insert a basic user guide here to get a n00b up and running with the software inside the container.> DELETE ME
+You must create a user and database for pydio to use in a mysql/mariadb or postgresql server. You can use sqlite with no further config needed, but this should only be considered for testing purposes.
+In the setup page for database, use the ip address rather than hostname...
+
+For email settings edit the file /config/ssmtp.conf and restart the container.
 
 
 ## Updates
