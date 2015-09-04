@@ -35,7 +35,7 @@ tar \
 unzip \
 wget"
 
-# install packages
+# install packages
 RUN apt-get update -q && \
 apt-get install \
 $APTLIST -qy && \
@@ -49,14 +49,10 @@ RUN pear config-set preferred_state alpha && \
 pear install VersionControl_Git && \
 pear config-set preferred_state stable && \
 pear install HTTP_WebDAV_Client && \
-pear install channel://pear.php.net/HTTP_OAuth-0.3.1
+pear install channel://pear.php.net/HTTP_OAuth-0.3.1 && \
 
-# add some files 
-ADD defaults/ /defaults/
-ADD init/ /etc/my_init.d/
-RUN chmod -v +x /etc/service/*/run /etc/my_init.d/*.sh && \
 
-# enable php mods and set some config for pydio
+# enable php mods and set some config for pydio
 php5enmod imap mcrypt && \
 sed -i -e "s@\output_buffering =.*@\output_buffering = \off@g" /etc/php5/fpm/php.ini && \
 sed -i -e "s@\output_buffering =.*@\output_buffering = \off@g" /etc/php5/cli/php.ini && \
@@ -70,10 +66,16 @@ rm /etc/ssmtp/ssmtp.conf && \
 mv /usr/sbin/sendmail /usr/sbin/sendmail.org && \
 ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
 
+# add some files 
+ADD defaults/ /defaults/
+ADD init/ /etc/my_init.d/
+RUN chmod -v +x /etc/service/*/run /etc/my_init.d/*.sh
+
 # expose ports
 EXPOSE 80 443
 
 # set volumes
 VOLUME /config /data
+
 
 
