@@ -1,10 +1,5 @@
 server {
         server_name _;
-        listen 80;
-        rewrite ^ https://$server_name$request_uri? permanent;
-}
-server {
-        server_name _;
         root /config/www/pydio;
         index index.php;
         listen 443 ssl;
