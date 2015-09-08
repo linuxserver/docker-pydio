@@ -1,6 +1,6 @@
 ![http://linuxserver.io](http://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)
 
-The [LinuxServer.io](https://www.linuxserver.io/) team brings you another quality container release featuring auto-update on startup, easy user mapping and community support. Be sure to checkout our [forums](https://forum.linuxserver.io/index.php) or for real-time support our [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
+The [LinuxServer.io](https://www.linuxserver.io/) team brings you another quality container release featuring update of dependencies on startup, easy user mapping and community support. Be sure to checkout our [forums](https://forum.linuxserver.io/index.php) or for real-time support our [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
 
 # linuxserver/pydio
 
@@ -39,12 +39,12 @@ For email settings edit the file /config/ssmtp.conf and restart the container.
 
 
 ## Updates
-
-* Upgrade to the latest version simply `docker restart pydio`.
+* Upgrade the dependencies simply by `docker restart pydio`.
+* Upgrade to the latest version through the web interface
 * To monitor the logs of the container in realtime `docker logs -f pydio`.
 
 
 
 ## Versions
 
-+ **dd.MM.yyyy:** Initial Release. 
++ **08.09.2015:** Initial Release. 
