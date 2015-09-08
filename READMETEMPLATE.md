@@ -35,6 +35,8 @@ Part of what makes our containers work so well is by allowing you to specify you
 You must create a user and database for pydio to use in a mysql/mariadb or postgresql server. You can use sqlite with no further config needed, but this should only be considered for testing purposes.
 In the setup page for database, use the ip address rather than hostname...
 
+Self-signed keys are generated the first time you run the container and can be found in /config/keys , if needed, you can replace them with your own.
+
 For email settings edit the file /config/ssmtp.conf and restart the container.
 
 
