@@ -24,7 +24,6 @@ pear config-set preferred_state stable && \
 pear install HTTP_WebDAV_Client && \
 pear install channel://pear.php.net/HTTP_OAuth-0.3.1 && \
 
-
 # enable php mods and set some config for pydio
 php5enmod imap mcrypt && \
 sed -i -e "s@\output_buffering =.*@\output_buffering = \off@g" /etc/php5/fpm/php.ini && \
@@ -39,15 +38,13 @@ rm /etc/ssmtp/ssmtp.conf && \
 mv /usr/sbin/sendmail /usr/sbin/sendmail.org && \
 ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
 
-# add some files 
+# add custom files 
 ADD defaults/ /defaults/
 ADD init/ /etc/my_init.d/
 RUN chmod -v +x /etc/service/*/run /etc/my_init.d/*.sh
 
-# expose ports
+# ports and volumes
 EXPOSE 443
-
-# set volumes
 VOLUME /config /data
 
 
