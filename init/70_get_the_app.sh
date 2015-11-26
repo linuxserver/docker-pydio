@@ -1,8 +1,8 @@
 #!/bin/bash
 if [ ! -f "/config/www/pydio/index.php" ]; then
-wget -O /tmp/pydio.tar.gz http://sourceforge.net/projects/ajaxplorer/files/pydio/stable-channel/6.0.8/pydio-core-6.0.8.tar.gz
+curl -o /tmp/install.zip  -L http://sourceforge.net/projects/ajaxplorer/files/latest/download?source=files
 cd /tmp
-tar -xvf pydio.tar.gz
+unzip install.zip
 mv pydio-*/data/* /data/
 mv pydio-* /config/www/pydio
 cd /
