@@ -2,6 +2,9 @@ FROM linuxserver/baseimage.nginx
 
 MAINTAINER Sparklyballs <sparklyballs@linuxserver.io>
 
+# copy sources.list
+COPY sources.list /etc/apt/
+
 # set install packages as variable
 ENV APTLIST="acl bzip2 imagemagick ghostscript git gzip openssl libsqlite3-dev libssh2-php memcached php5-cli \
 php5-curl php5-dev php5-gd php5-imagick php5-imap php5-mcrypt php5-memcached php-pear php5-ldap php-mail-mimedecode \
