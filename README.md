@@ -11,7 +11,7 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
 # linuxserver/pydio
-[![](https://images.microbadger.com/badges/image/linuxserver/pydio.svg)](http://microbadger.com/images/linuxserver/pydio "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/pydio.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/pydio.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-pydio)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-pydio/)
+[![](https://images.microbadger.com/badges/version/linuxserver/pydio.svg)](https://microbadger.com/images/linuxserver/pydio "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/pydio.svg)](http://microbadger.com/images/linuxserver/pydio "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/pydio.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/pydio.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-pydio)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-pydio/)
 [hub]: https://hub.docker.com/r/linuxserver/pydio/
 
 Pydio (formerly AjaXplorer) is a mature open source software solution for file sharing and synchronization. With intuitive user interfaces (web / mobile / desktop), Pydio provides enterprise-grade features to gain back control and privacy of your data: user directory connectors, legacy filesystems drivers, comprehensive admin interface, and much more. [pydio][pydiourl]
@@ -67,12 +67,20 @@ Self-signed keys are generated the first time you run the container and can be f
 For email settings edit the file /config/ssmtp.conf and restart the container.
 
 
-## Updates
-* Upgrade the dependencies simply by `docker restart pydio`.
+## Info
 * Upgrade to the latest version through the web interface
 * To monitor the logs of the container in realtime `docker logs -f pydio`.
 
+* container version number 
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' pydio`
+
+* image version number
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/pydio`
+
 ## Versions
 
++ **14-10-16:** Add version layer information.
 + **10.09.16:** Add layer badges to README. 
 + **08.09.15:** Initial Release. 
