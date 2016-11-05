@@ -87,6 +87,8 @@ For email settings edit the file /config/ssmtp.conf and restart the container.
 
 ## Versions
 
++ **05.11.16:** Pinned at latest sourceforge download version,
+ in lieu of a full rewrite.
 + **14.10.16:** Add version layer information.
 + **10.09.16:** Add layer badges to README. 
 + **08.09.15:** Initial Release. 
