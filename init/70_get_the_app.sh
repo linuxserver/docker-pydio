@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ ! -f "/config/www/pydio/index.php" ]; then
-curl -o /tmp/install.zip  -L https://sourceforge.net/projects/ajaxplorer/files/pydio/stable-channel/6.4.2/pydio-core-6.4.2.zip/download
+curl -o /tmp/install.zip  -L https://download.pydio.com/pub/core/archives/pydio-core-7.0.2.zip 
 cd /tmp || exit
 unzip install.zip
 mv pydio-*/data/* /data/
