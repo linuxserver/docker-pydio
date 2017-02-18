@@ -6,8 +6,19 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-# install packages
+# install build packages
 RUN \
+ apk add --no-cache --virtual=build-dependencies \
+	autoconf \
+	file \
+	g++ \
+	gcc \
+	imagemagick-dev \
+	libtool \
+	make \
+	php7-dev && \
+
+# install runtime packages
  apk add --no-cache \
 	acl \
 	bzip2 \
@@ -25,7 +36,6 @@ RUN \
 	php7-ctype \
 	php7-curl \
 	php7-dba \
-	php7-dev \
 	php7-dom \
 	php7-exif \
 	php7-ftp \
@@ -55,7 +65,38 @@ RUN \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	php7-memcached \
-	php7-ssh2
+	php7-ssh2 && \
+
+# install php imagemagick
+ mkdir -p \
+	/tmp/imagick-src && \
+ curl -o \
+ /tmp/imagick.tgz -L \
+	https://pecl.php.net/get/imagick && \
+ tar xf \
+ /tmp/imagick.tgz -C \
+	/tmp/imagick-src --strip-components=1 && \
+ cd /tmp/imagick-src && \
+ phpize7 && \
+ ./configure \
+	--prefix=/usr \
+	--with-php-config=/usr/bin/php-config7 && \
+ make && \
+ make install && \
+ echo "extension=imagick.so" > /etc/php7/conf.d/00_imagick.ini && \
+
+# configure php
+sed -i \
+	-e "s@\output_buffering =.*@\output_buffering = \off@g" \
+	-e "s/post_max_size =.*$/post_max_size = 1560M/" \
+	-e "s/upload_max_filesize =.*$/upload_max_filesize = 2048M/" \
+		/etc/php7/php.ini && \
+
+# cleanup
+ apk del --purge \
+	build-dependencies && \
+ rm -rf \
+	/tmp/*
 
 # copy local files
 COPY root/ /
