@@ -1,11 +1,14 @@
-#!/bin/bash
-mkdir -p /config/log/pydio /config/php
+#!/usr/bin/with-contenv bash
 
-# sed in pydio data folder locations for /data and logging
+# make our folders
+mkdir -p \
+	/config/{log/pydio,php,sess}
+
+# sed pydio folder locations for /data and logging
 sed -i -e \
-	's@\define("AJXP_DATA_PATH",.*@\define("AJXP_DATA_PATH", "/data");@g' \
-	-i -e 's@\define("AJXP_SHARED_CACHE_DIR",.*@\define("AJXP_SHARED_CACHE_DIR", "/data/cache");@g' \
-	-i -e 's@\// define("AJXP_FORCE_LOGPATH",.*@\define("AJXP_FORCE_LOGPATH", "/config/log/pydio/")\;@g' \
+	's#\define("AJXP_DATA_PATH",.*#\define("AJXP_DATA_PATH", "/data");#g' \
+	-i -e 's#\define("AJXP_SHARED_CACHE_DIR",.*#\define("AJXP_SHARED_CACHE_DIR", "/data/cache");#g' \
+	-i -e 's#\// define("AJXP_FORCE_LOGPATH",.*#\define("AJXP_FORCE_LOGPATH", "/config/log/pydio/")\;#g' \
 		/config/www/pydio/conf/bootstrap_context.php
 
 # copy php ini for user editing
@@ -19,6 +22,8 @@ if [ ! -f "/config/ssmtp.conf" ]; then
 cp /defaults/ssmtp.conf /config/ssmtp.conf
 chown abc:abc /config/ssmtp.conf
 fi
-
-chown -R abc:abc /config/log/pydio
 cp /config/ssmtp.conf /etc/ssmtp/ssmtp.conf
+
+# permissions
+chown -R abc:abc \
+	/config

@@ -98,9 +98,10 @@ RUN \
 	/usr/bin/php7 \
 	/usr/bin/php && \
  sed -i \
-	-e "s@\output_buffering =.*@\output_buffering = \off@g" \
+	-e "s#\output_buffering =.*#\output_buffering = \off#g" \
 	-e "s/post_max_size =.*$/post_max_size = 1560M/" \
 	-e "s/upload_max_filesize =.*$/upload_max_filesize = 2048M/" \
+	-e 's#;session.save_path = "/tmp"#session.save_path = "/config/sess"#g' \
 		/etc/php7/php.ini && \
 
 # cleanup

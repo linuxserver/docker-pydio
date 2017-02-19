@@ -11,4 +11,3 @@ if [ ! -f "/config/www/pydio/index.php" ]; then
 	rm -rf /tmp/* /config/www/data
 	chown -R abc:abc /config/www/pydio /data
 fi
-
