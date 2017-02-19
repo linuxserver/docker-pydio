@@ -8,6 +8,11 @@ sed -i -e \
 	-i -e 's@\// define("AJXP_FORCE_LOGPATH",.*@\define("AJXP_FORCE_LOGPATH", "/config/log/pydio/")\;@g' \
 		/config/www/pydio/conf/bootstrap_context.php
 
+# copy php ini for user editing
+[[ ! -e "/config/php/php.ini" ]] && \
+	cp /etc/php7/php.ini /config/php/php.ini
+cp /config/php/php.ini /etc/php7/php.ini
+
 # setting email config file.
 
 if [ ! -f "/config/ssmtp.conf" ]; then

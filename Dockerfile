@@ -14,8 +14,10 @@ RUN \
 	g++ \
 	gcc \
 	imagemagick-dev \
+	libc-dev \
 	libtool \
 	make \
+	pkgconf \
 	php7-dev && \
 
 # install runtime packages
@@ -61,7 +63,8 @@ RUN \
 	subversion \
 	tar \
 	unzip \
-	wget && \
+	wget \
+	xz && \
 
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
@@ -90,8 +93,11 @@ RUN \
  pear install \
 	Mail_mimeDecode && \
 
-# configure php
-sed -i \
+# configure php, including symlink to fix cli warning in pydio.
+ ln -s \
+	/usr/bin/php7 \
+	/usr/bin/php && \
+ sed -i \
 	-e "s@\output_buffering =.*@\output_buffering = \off@g" \
 	-e "s/post_max_size =.*$/post_max_size = 1560M/" \
 	-e "s/upload_max_filesize =.*$/upload_max_filesize = 2048M/" \
