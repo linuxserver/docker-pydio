@@ -87,6 +87,7 @@ For email settings edit the file /config/ssmtp.conf and restart the container.
 
 ## Versions
 
++ **18.02.17:** Rebase to alpine linux 3.5.
 + **05.11.16:** Pinned at latest sourceforge download version,
  in lieu of a full rewrite.
 + **14.10.16:** Add version layer information.

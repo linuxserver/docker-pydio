@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+
+if [ ! -f "/config/www/pydio/index.php" ]; then
+	curl -o /tmp/install.zip  -L \
+		"https://download.pydio.com/pub/core/archives/pydio-core-${PYDIO_VER}.zip"
+	cd /tmp || exit
+	unzip -qq install.zip
+	mv pydio-*/data/* /data/
+	mv pydio-* /config/www/pydio
+	cd / || exit
+	rm -rf /tmp/* /config/www/data
+	chown -R abc:abc /config/www/pydio /data
+fi

@@ -1,0 +1,29 @@
+#!/usr/bin/with-contenv bash
+
+# make our folders
+mkdir -p \
+	/config/{log/pydio,php,sess}
+
+# sed pydio folder locations for /data and logging
+sed -i -e \
+	's#\define("AJXP_DATA_PATH",.*#\define("AJXP_DATA_PATH", "/data");#g' \
+	-i -e 's#\define("AJXP_SHARED_CACHE_DIR",.*#\define("AJXP_SHARED_CACHE_DIR", "/data/cache");#g' \
+	-i -e 's#\// define("AJXP_FORCE_LOGPATH",.*#\define("AJXP_FORCE_LOGPATH", "/config/log/pydio/")\;#g' \
+		/config/www/pydio/conf/bootstrap_context.php
+
+# copy php ini for user editing
+[[ ! -e "/config/php/php.ini" ]] && \
+	cp /etc/php7/php.ini /config/php/php.ini
+cp /config/php/php.ini /etc/php7/php.ini
+
+# setting email config file.
+
+if [ ! -f "/config/ssmtp.conf" ]; then
+cp /defaults/ssmtp.conf /config/ssmtp.conf
+chown abc:abc /config/ssmtp.conf
+fi
+cp /config/ssmtp.conf /etc/ssmtp/ssmtp.conf
+
+# permissions
+chown -R abc:abc \
+	/config
