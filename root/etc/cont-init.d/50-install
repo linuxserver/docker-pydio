@@ -2,7 +2,7 @@
 
 if [ ! -f "/config/www/pydio/index.php" ]; then
 	curl -o /tmp/install.zip  -L \
-		https://download.pydio.com/pub/core/archives/pydio-core-7.0.2.zip
+		"https://download.pydio.com/pub/core/archives/pydio-core-${PYDIO_VER}.zip"
 	cd /tmp || exit
 	unzip -qq install.zip
 	mv pydio-*/data/* /data/
