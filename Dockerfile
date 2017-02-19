@@ -54,6 +54,7 @@ RUN \
 	php7-snmp \
 	php7-sqlite3 \
 	php7-xmlrpc \
+	re2c \
 	rsync \
 	sqlite \
 	ssmtp \
@@ -84,6 +85,10 @@ RUN \
  make && \
  make install && \
  echo "extension=imagick.so" > /etc/php7/conf.d/00_imagick.ini && \
+
+# install mailmimedecode
+ pear install \
+	Mail_mimeDecode && \
 
 # configure php
 sed -i \
