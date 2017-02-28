@@ -6,9 +6,9 @@ mkdir -p \
 
 # sed pydio folder locations for /data and logging
 sed -i -e \
-	's#\define("AJXP_DATA_PATH",.*#\define("AJXP_DATA_PATH", "/data");#g' \
-	-i -e 's#\define("AJXP_SHARED_CACHE_DIR",.*#\define("AJXP_SHARED_CACHE_DIR", "/data/cache");#g' \
-	-i -e 's#\// define("AJXP_FORCE_LOGPATH",.*#\define("AJXP_FORCE_LOGPATH", "/config/log/pydio/")\;#g' \
+	's#define("AJXP_DATA_PATH",.*#define("AJXP_DATA_PATH", "/data");#g' \
+	-i -e 's#define("AJXP_SHARED_CACHE_DIR",.*#define("AJXP_SHARED_CACHE_DIR", "/data/cache");#g' \
+	-i -e 's#// define("AJXP_FORCE_LOGPATH",.*#define("AJXP_FORCE_LOGPATH", "/config/log/pydio/")\;#g' \
 		/config/www/pydio/conf/bootstrap_context.php
 
 # copy php ini for user editing
