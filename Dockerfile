@@ -20,7 +20,9 @@ RUN \
 	libc-dev \
 	libtool \
 	make \
-	pkgconf \
+	pkgconf && \
+ apk add --no-cache --virtual=build-dependencies \
+	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-dev && \
 
 # install runtime packages
@@ -34,6 +36,21 @@ RUN \
 	imagemagick \
 	memcached \
 	openssl \
+	re2c \
+	rsync \
+	sqlite \
+	ssmtp \
+	subversion \
+	tar \
+	unzip \
+	wget \
+	xz && \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/main \
+	icu-libs \
+	libwebp && \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-apcu \
 	php7-bcmath \
 	php7-bz2 \
@@ -58,16 +75,7 @@ RUN \
 	php7-pspell \
 	php7-snmp \
 	php7-sqlite3 \
-	php7-xmlrpc \
-	re2c \
-	rsync \
-	sqlite \
-	ssmtp \
-	subversion \
-	tar \
-	unzip \
-	wget \
-	xz && \
+	php7-xmlrpc && \
 
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
