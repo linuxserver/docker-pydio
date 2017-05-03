@@ -68,6 +68,8 @@ RUN \
 	php7-xmlrpc@community && \
  apk add --no-cache \
 	php7-ssh2@testing && \
+ if [[ -e /usr/lib/php7/ssh2.so && ! -e /usr/lib/php7/modules/ssh2.so ]]; then \
+	ln -s /usr/lib/php7/ssh2.so  /usr/lib/php7/modules/ssh2.so ; fi && \
 
 # install mailmimedecode
  pear install \
