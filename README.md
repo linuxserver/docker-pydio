@@ -87,6 +87,7 @@ For email settings edit the file /config/ssmtp.conf and restart the container.
 
 ## Versions
 
++ **17.05.17:** Make default install pydio 8.
 + **03.05.17:** Use repo pinning to better solve dependencies, use repo version of php7-imagick.
 + **28.02.17:** Modify sed for data path.
 + **18.02.17:** Rebase to alpine linux 3.5.
