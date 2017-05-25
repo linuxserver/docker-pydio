@@ -1,4 +1,4 @@
-FROM lsiobase/alpine.nginx:3.5
+FROM lsiobase/alpine.nginx:3.6
 MAINTAINER sparklyballs
 
 # set version label
@@ -9,21 +9,45 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 # package version
 ENV PYDIO_VER="8.0.0"
 
-# add repositories
-RUN \
- echo "@community http://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
- echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
- echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-
 # install packages
+RUN \
  apk add --no-cache \
 	acl \
 	bzip2 \
 	curl \
 	git \
 	gzip \
+	imagemagick \
 	memcached \
 	openssl \
+	php7-apcu \
+	php7-bcmath \
+	php7-bz2 \
+	php7-calendar \
+	php7-ctype \
+	php7-curl \
+	php7-dba \
+	php7-dom \
+	php7-exif \
+	php7-ftp \
+	php7-gd \
+	php7-gettext \
+	php7-iconv \
+	php7-imagick \
+	php7-imap \
+	php7-intl \
+	php7-ldap \
+	php7-mcrypt \
+	php7-memcached \
+	php7-mysqli \
+	php7-mysqlnd \
+	php7-opcache \
+	php7-pear \
+	php7-pgsql \
+	php7-pspell \
+	php7-snmp \
+	php7-sqlite3 \
+	php7-xmlrpc \
 	re2c \
 	rsync \
 	sqlite \
@@ -34,40 +58,9 @@ RUN \
 	wget \
 	xz && \
  apk add --no-cache \
-	icu-libs@edge \
-	imagemagick@edge \
-	libwebp@edge && \
- apk add --no-cache \
-	php7-apcu@community \
-	php7-bcmath@community \
-	php7-bz2@community \
-	php7-calendar@community \
-	php7-ctype@community \
-	php7-curl@community \
-	php7-dba@community \
-	php7-dom@community \
-	php7-exif@community \
-	php7-ftp@community \
-	php7-gd@community \
-	php7-gettext@community \
-	php7-iconv@community \
-	php7-imagick@community \
-	php7-imap@community \
-	php7-intl@community \
-	php7-ldap@community \
-	php7-mcrypt@community \
-	php7-memcached@community \
-	php7-mysqli@community \
-	php7-mysqlnd@community \
-	php7-opcache@community \
-	php7-pear@community \
-	php7-pgsql@community \
-	php7-pspell@community \
-	php7-snmp@community \
-	php7-sqlite3@community \
-	php7-xmlrpc@community && \
- apk add --no-cache \
-	php7-ssh2@testing && \
+	--repository http://nl.alpinelinux.org/alpine/edge/testing \
+	php7-ssh2 && \
+
  if [[ -e /usr/lib/php7/ssh2.so && ! -e /usr/lib/php7/modules/ssh2.so ]]; then \
 	ln -s /usr/lib/php7/ssh2.so  /usr/lib/php7/modules/ssh2.so ; fi && \
 
