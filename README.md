@@ -87,6 +87,7 @@ For email settings edit the file /config/ssmtp.conf and restart the container.
 
 ## Versions
 
++ **28.10.17:** php7-ssh2 moved from testing to community repo.
 + **25.05.17:** Rebase to alpine linux 3.6.
 + **17.05.17:** Make default install pydio 8.
 + **03.05.17:** Use repo pinning to better solve dependencies, use repo version of php7-imagick.
