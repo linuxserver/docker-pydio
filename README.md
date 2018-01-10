@@ -28,6 +28,7 @@ docker create \
 -v /etc/localtime:/etc/localtime:ro \
 -v <path to data>:/config \
 -v <path to data>:/data \
+-e PYDIO_URL=<yourdomain> \
 -e PGID=<gid> -e PUID=<uid>  \
 -e TZ=<timezone> \
 -p 443:443 \
@@ -46,6 +47,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /etc/localtime` for timesync - *optional*, *omit if using TZ variable*
 * `-v /config` - where pydio should store it's configuration files
 * `-v /data` - where pydio should store uploaded files
+* `-e PYDIO_URL` URL passed to Nginx - This will set the servername in the Nginx configuration. If left blank localhost will be used
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
 * `-e TZ` for setting timezone information, eg Europe/London
@@ -87,6 +89,7 @@ For email settings edit the file /config/ssmtp.conf and restart the container.
 
 ## Versions
 
++ **10.01.18:** Modified Nginx config to allow public file sharing, adding URL variable to set correctly in Nginx.
 + **28.10.17:** php7-ssh2 moved from testing to community repo.
 + **25.05.17:** Rebase to alpine linux 3.6.
 + **17.05.17:** Make default install pydio 8.
