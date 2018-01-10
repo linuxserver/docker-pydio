@@ -11,6 +11,18 @@ sed -i -e \
 	-i -e 's#// define("AJXP_FORCE_LOGPATH",.*#define("AJXP_FORCE_LOGPATH", "/config/log/pydio/")\;#g' \
 		/config/www/pydio/conf/bootstrap_context.php
 
+# sed nginx config with server name
+
+if [[ -z "${PYDIO_URL}" ]]; then
+  sed -i -e \
+    's/REPLACEHOSTNAME/localhost/g' \
+    /config/nginx/site-confs/default
+else
+  sed -i -e \
+    's/REPLACEHOSTNAME/'${PYDIO_URL}'/g' \
+    /config/nginx/site-confs/default
+fi
+
 # copy php ini for user editing
 [[ ! -e "/config/php/php.ini" ]] && \
 	cp /etc/php7/php.ini /config/php/php.ini

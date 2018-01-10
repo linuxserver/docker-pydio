@@ -60,14 +60,11 @@ RUN \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-ssh2 && \
-
  if [[ -e /usr/lib/php7/ssh2.so && ! -e /usr/lib/php7/modules/ssh2.so ]]; then \
 	ln -s /usr/lib/php7/ssh2.so  /usr/lib/php7/modules/ssh2.so ; fi && \
-
 # install mailmimedecode
  pear install \
 	Mail_mimeDecode && \
-
 # configure php, including symlink to fix cli warning in pydio.
  ln -sf \
 	/usr/bin/php7 \
