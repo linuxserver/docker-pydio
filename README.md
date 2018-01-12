@@ -70,6 +70,8 @@ In the setup page for database, use the ip address rather than hostname...
 
 Self-signed keys are generated the first time you run the container and can be found in /config/keys , if needed, you can replace them with your own.
 
+For public link sharing to function correctly be sure to change the Detected Server Url to the URL of your pydio instance in the setup wizard.
+
 For email settings edit the file /config/ssmtp.conf and restart the container.
 
 
@@ -87,6 +89,7 @@ For email settings edit the file /config/ssmtp.conf and restart the container.
 
 ## Versions
 
++ **12.01.18:** Rebase to alpine linux 3.7.
 + **28.10.17:** php7-ssh2 moved from testing to community repo.
 + **25.05.17:** Rebase to alpine linux 3.6.
 + **17.05.17:** Make default install pydio 8.

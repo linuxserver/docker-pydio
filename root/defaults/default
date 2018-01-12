@@ -8,7 +8,7 @@ server {
         access_log /config/log/pydio/access_pydio6_log;
         error_log /config/log/pydio/error_pydio6_log;
 
-	ssl_certificate /config/keys/cert.crt;
+        ssl_certificate /config/keys/cert.crt;
         ssl_certificate_key /config/keys/cert.key;
         client_max_body_size 0;
         client_body_buffer_size 128k;
@@ -19,13 +19,11 @@ server {
                 rewrite ^/shares /dav.php last;
                 # Sync client
                 rewrite ^/api /rest.php last;
-                # External users 
+                # External users
                 rewrite ^/user ./index.php?get_action=user_access_point last;
-                # Public shares
-                rewrite ^/data/public/([a-zA-Z0-9_-]+)\.php$ /data/public/share.php?hash=$1?;
+                # Catch all others
+                rewrite ^(.*)$ /index.php break;
         }
-        rewrite ^/data/public/([a-zA-Z0-9_-]+)--([a-z]+)$ /data/public/share.php?hash=$1&lang=$2?;
-        rewrite ^/data/public/([a-zA-Z0-9_-]+)$ /data/public/share.php?hash=$1?;
 
         # Prevent Clickjacking
         add_header X-Frame-Options "SAMEORIGIN";
@@ -42,9 +40,6 @@ server {
         location ~ \.php$ {
                 # for ^/(index|plugins) request_uri should be changed
                 set $request_url $request_uri;
-                if ( $uri ~ ^/(index|plugins) ) {
-                        set $request_url /;
-                }
                 include /etc/nginx/fastcgi_params;
                 fastcgi_param  REQUEST_URI $request_url;
                 try_files $uri =404;

@@ -1,16 +1,16 @@
-FROM lsiobase/alpine.nginx:3.6
-MAINTAINER sparklyballs
+FROM lsiobase/alpine.nginx:3.7
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="sparklyballs"
 
 # package version
 ENV PYDIO_VER="8.0.0"
 
-# install packages
 RUN \
+ echo "**** install packages ****" && \
  apk add --no-cache \
 	acl \
 	bzip2 \
@@ -47,6 +47,7 @@ RUN \
 	php7-pspell \
 	php7-snmp \
 	php7-sqlite3 \
+	php7-ssh2 \
 	php7-xmlrpc \
 	re2c \
 	rsync \
@@ -57,18 +58,12 @@ RUN \
 	unzip \
 	wget \
 	xz && \
- apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/community \
-	php7-ssh2 && \
-
  if [[ -e /usr/lib/php7/ssh2.so && ! -e /usr/lib/php7/modules/ssh2.so ]]; then \
 	ln -s /usr/lib/php7/ssh2.so  /usr/lib/php7/modules/ssh2.so ; fi && \
-
-# install mailmimedecode
+ echo "**** install mailmimedecode ****" && \
  pear install \
 	Mail_mimeDecode && \
-
-# configure php, including symlink to fix cli warning in pydio.
+ echo "**** configure php, including symlink to fix cli warning in pydio. ****" && \
  ln -sf \
 	/usr/bin/php7 \
 	/usr/bin/php && \
