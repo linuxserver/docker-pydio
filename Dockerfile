@@ -47,6 +47,7 @@ RUN \
 	php7-pspell \
 	php7-snmp \
 	php7-sqlite3 \
+	php7-ssh2 \
 	php7-xmlrpc \
 	re2c \
 	rsync \
@@ -57,9 +58,6 @@ RUN \
 	unzip \
 	wget \
 	xz && \
- apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/community \
-	php7-ssh2 && \
  if [[ -e /usr/lib/php7/ssh2.so && ! -e /usr/lib/php7/modules/ssh2.so ]]; then \
 	ln -s /usr/lib/php7/ssh2.so  /usr/lib/php7/modules/ssh2.so ; fi && \
  echo "**** install mailmimedecode ****" && \
