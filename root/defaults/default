@@ -2,7 +2,8 @@ server {
         server_name _;
         root /config/www/pydio;
         index index.php;
-        listen 443 ssl;
+        listen 80;
+        listen 443 default_server ssl;
         keepalive_requests    10;
         keepalive_timeout     60 60;
         access_log /config/log/pydio/access_pydio6_log;
