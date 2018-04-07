@@ -15,12 +15,6 @@ server {
 
         rewrite ^/dashboard|^/settings|^/welcome|^/ws- /index.php last;
         if ( !-e $request_filename ) {
-                # WebDAV Rewrites
-                rewrite ^/shares /dav.php last;
-                # Sync client
-                rewrite ^/api /rest.php last;
-                # External users
-                rewrite ^/user ./index.php?get_action=user_access_point last;
                 # Catch all others
                 rewrite ^(.*)$ /index.php break;
         }
