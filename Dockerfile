@@ -7,7 +7,7 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="sparklyballs"
 
 # package version
-ENV PYDIO_VER="8.0.0"
+ENV PYDIO_VER="8.2.1"
 
 RUN \
  echo "**** install packages ****" && \
