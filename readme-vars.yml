@@ -1,0 +1,70 @@
+---
+
+# project information
+project_name: pydio
+project_url: "https://pydio.com/"
+project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/pydio-banner.png"
+project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) (formerly AjaXplorer) is a mature open source software solution for file sharing and synchronization. With intuitive user interfaces (web / mobile / desktop), Pydio provides enterprise-grade features to gain back control and privacy of your data: user directory connectors, legacy filesystems drivers, comprehensive admin interface, and much more."
+project_blurb_optional_extras_enabled: false
+
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
+  - { arch: "{{ arch_armhf }}", tag: "arm32v6-latest"}
+
+# development version
+development_versions: false
+
+# container parameters
+common_param_env_vars_enabled: true
+param_container_name: "{{ project_name }}"
+param_usage_include_net: false
+param_usage_include_env: true
+param_env_vars:
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where pydio should store it's configuration files." }
+  - { vol_path: "/data", vol_host_path: "<path to data>", desc: "Where pydio should store uploaded files." }
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "443", internal_port: "443", port_desc: "WebUI" }
+param_device_map: false
+cap_add_param: false
+
+# optional container parameters
+opt_param_usage_include_env: false
+opt_param_usage_include_vols: false
+opt_param_usage_include_ports: false
+opt_param_device_map: false
+opt_cap_add_param: false
+optional_block_1: false
+
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
+  You must create a user and database for pydio to use in a mysql/mariadb or postgresql server. You can use sqlite with no further config needed, but this should only be considered for testing purposes.
+  In the setup page for database, use the ip address rather than hostname...
+
+  Self-signed keys are generated the first time you run the container and can be found in /config/keys , if needed, you can replace them with your own.
+
+  For public link sharing to function correctly be sure to change the Detected Server Url to the URL of your pydio instance in the setup wizard.
+
+  For email settings edit the file /config/ssmtp.conf and restart the container.
+
+# changelog
+changelogs:
+  - { date: "11.02.19:", desc: "Add pipeline logic and multi arch, rebase to alpine 3.8." }
+  - { date: "12.01.18:", desc: "Rebase to alpine linux 3.7." }
+  - { date: "28.10.17:", desc: "php7-ssh2 moved from testing to community repo." }
+  - { date: "25.05.17:", desc: "Rebase to alpine linux 3.6." }
+  - { date: "17.05.17:", desc: "Make default install pydio 8." }
+  - { date: "03.05.17:", desc: "Use repo pinning to better solve dependencies, use repo version of php7-imagick." }
+  - { date: "28.02.17:", desc: "Modify sed for data path." }
+  - { date: "18.02.17:", desc: "Rebase to alpine linux 3.5." }
+  - { date: "05.11.16:", desc: "Pinned at latest sourceforge download version, in lieu of a full rewrite." }
+  - { date: "14.10.16:", desc: "Add version layer information." }
+  - { date: "10.09.16:", desc: "Add layer badges to README." }
+  - { date: "08.09.15:", desc: "Initial Release." }
