@@ -1,0 +1,27 @@
+---
+
+# jenkins variables
+project_name: docker-pydio
+external_type: na
+custom_version_command: "curl -sX GET https://download.pydio.com/pub/linux/debian/dists/bionic/main/binary-amd64/Packages |grep -A 7 -m 1 'Package: pydio-core' | awk -F ': ' '/Version/{print $2;exit}' | sed 's/..$//'"
+release_type: stable
+release_tag: latest
+ls_branch: master
+repo_vars:
+  - BUILD_VERSION_ARG = 'PYDIO_VERSION'
+  - LS_USER = 'linuxserver'
+  - LS_REPO = 'docker-pydio'
+  - CONTAINER_NAME = 'pydio'
+  - DOCKERHUB_IMAGE = 'linuxserver/pydio'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/pydio'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/pydio'
+  - DIST_IMAGE = 'alpine'
+  - MULTIARCH='true'
+  - CI='true'
+  - CI_WEB='true'
+  - CI_PORT='443'
+  - CI_SSL='true'
+  - CI_DELAY='120'
+  - CI_DOCKERENV='TZ=US/Pacific'
+  - CI_AUTH='user:password'
+  - CI_WEBPATH=''

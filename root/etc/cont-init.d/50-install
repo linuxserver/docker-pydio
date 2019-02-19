@@ -1,8 +1,9 @@
 #!/usr/bin/with-contenv bash
 
+PYDIO_VERSION=$(cat /version.txt)
 if [ ! -f "/config/www/pydio/index.php" ]; then
 	curl -o /tmp/install.zip  -L \
-		"https://download.pydio.com/pub/core/archives/pydio-core-${PYDIO_VER}.zip"
+		"https://download.pydio.com/pub/core/archives/pydio-core-${PYDIO_VERSION}.zip"
 	cd /tmp || exit
 	unzip -qq install.zip
 	mv pydio-*/data/* /data/
