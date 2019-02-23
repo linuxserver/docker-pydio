@@ -56,6 +56,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "22.02.19:", desc: "Rebasing to alpine 3.9." }
   - { date: "11.02.19:", desc: "Add pipeline logic and multi arch, rebase to alpine 3.8." }
   - { date: "12.01.18:", desc: "Rebase to alpine linux 3.7." }
   - { date: "28.10.17:", desc: "php7-ssh2 moved from testing to community repo." }
