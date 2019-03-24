@@ -1,4 +1,4 @@
-FROM lsiobase/alpine.nginx:3.8
+FROM lsiobase/nginx:3.8
 
 # set version label
 ARG BUILD_DATE
@@ -77,7 +77,6 @@ RUN \
 	|grep -A 7 -m 1 'Package: pydio-core' | awk -F ': ' '/Version/{print $2;exit}' | sed 's/..$//'); \
  fi && \
  echo ${PYDIO_VERSION} > /version.txt
-
 
 # copy local files
 COPY root/ /
