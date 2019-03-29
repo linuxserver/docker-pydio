@@ -67,7 +67,7 @@ librsvg-2.40.20-r0
 libsasl-2.1.26-r14
 libseccomp-2.3.3-r1
 libsm-1.2.2-r1
-libssh2-1.8.1-r0
+libssh2-1.8.2-r0
 libssl1.0-1.0.2r-r0
 libstdc++-6.4.0-r9
 libtasn1-4.13-r0
