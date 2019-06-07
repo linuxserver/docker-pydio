@@ -11,7 +11,7 @@ bash-4.4.19-r1
 busybox-1.28.4-r3
 bzip2-1.0.6-r6
 c-client-2007f-r8
-ca-certificates-20171114-r3
+ca-certificates-20190108-r0
 cairo-1.14.12-r2
 coreutils-8.29-r2
 cups-libs-2.2.10-r0
