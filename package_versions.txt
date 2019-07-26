@@ -44,7 +44,7 @@ libblkid-2.33.2-r0
 libbsd-0.9.1-r0
 libbz2-1.0.6-r7
 libc-utils-0.7.1-r0
-libcroco-0.6.13-r0
+libcroco-0.6.13-r1
 libcrypto1.1-1.1.1c-r0
 libcurl-7.65.1-r0
 libde265-1.0.3-r0
@@ -73,7 +73,7 @@ libsm-1.2.3-r0
 libssh2-1.8.2-r1
 libssl1.1-1.1.1c-r0
 libstdc++-8.3.0-r0
-libtasn1-4.13-r0
+libtasn1-4.14-r0
 libtls-standalone-2.9.1-r0
 libunistring-0.9.10-r0
 libuuid-2.33.2-r0
