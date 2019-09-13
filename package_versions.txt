@@ -11,7 +11,7 @@ avahi-libs-0.7-r2
 bash-5.0.0-r0
 busybox-1.30.1-r2
 bzip2-1.0.6-r7
-c-client-2007f-r9
+c-client-2007f-r10
 ca-certificates-20190108-r0
 ca-certificates-cacert-20190108-r0
 cairo-1.16.0-r2
