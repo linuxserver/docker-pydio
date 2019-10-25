@@ -71,7 +71,7 @@ librsvg-2.40.20-r0
 libsasl-2.1.27-r3
 libseccomp-2.4.1-r0
 libsm-1.2.3-r0
-libssh2-1.9.0-r0
+libssh2-1.9.0-r1
 libssl1.1-1.1.1d-r0
 libstdc++-8.3.0-r0
 libtasn1-4.14-r0
@@ -166,7 +166,7 @@ subversion-1.12.2-r0
 subversion-libs-1.12.2-r0
 tar-1.32-r0
 tiff-4.0.10-r1
-tzdata-2019b-r0
+tzdata-2019c-r0
 unzip-6.0-r4
 wget-1.20.3-r0
 x265-libs-3.0-r0
