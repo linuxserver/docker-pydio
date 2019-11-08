@@ -165,7 +165,7 @@ ssmtp-2.64-r14
 subversion-1.12.2-r0
 subversion-libs-1.12.2-r0
 tar-1.32-r0
-tiff-4.0.10-r1
+tiff-4.0.10-r2
 tzdata-2019c-r0
 unzip-6.0-r4
 wget-1.20.3-r0
