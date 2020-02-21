@@ -64,7 +64,7 @@ libmcrypt-2.5.8-r7
 libmemcached-libs-1.0.18-r4
 libmount-2.34-r1
 libpng-1.6.37-r1
-libpq-12.1-r0
+libpq-12.2-r0
 libressl3.0-libcrypto-3.0.2-r0
 libressl3.0-libssl-3.0.2-r0
 librsvg-2.46.4-r0
