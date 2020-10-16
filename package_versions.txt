@@ -138,7 +138,7 @@ php7-opcache-7.3.23-r0
 php7-openssl-7.3.23-r0
 php7-pear-7.3.23-r0
 php7-pecl-apcu-5.1.19-r0
-php7-pecl-igbinary-3.1.4-r0
+php7-pecl-igbinary-3.1.6-r0
 php7-pecl-imagick-3.4.4-r3
 php7-pecl-mcrypt-1.0.3-r0
 php7-pecl-memcached-3.1.5-r0
