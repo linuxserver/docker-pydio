@@ -105,7 +105,7 @@ ncurses-terminfo-base-6.2_p20200523-r0
 net-snmp-libs-5.8-r3
 nettle-3.5.1-r1
 nghttp2-libs-1.41.0-r0
-nginx-1.18.0-r0
+nginx-1.18.0-r1
 openssl-1.1.1g-r0
 p11-kit-0.23.20-r5
 pango-1.44.7-r2
