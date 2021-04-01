@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+
+echo '
+******************************************************
+******************************************************
+*                                                    *
+*                                                    *
+*          This image has been deprecated            *
+*                                                    *
+*                You can switch to                   *
+*                                                    *
+*             linuxserver/pydio-cells                *
+*                                                    *
+*  https://hub.docker.com/r/linuxserver/pydio-cells  *
+*                                                    *
+*  https://github.com/linuxserver/docker-pydio-cells *
+*                                                    *
+*                                                    *
+*                                                    *
+******************************************************
+******************************************************'
